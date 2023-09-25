@@ -11,8 +11,8 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-$old =$_GET["id"];//IDที่ใช้อ้างอิง
-$id = $_GET["id"]; // IDที่จะอัพเดต
+$old =isset($_GET["id"]) ?$_GET["id"]: 0;//IDที่ใช้อ้างอิง
+$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
 // ดึงข้อมูลเก่าจากฐานข้อมูล
 $sql = "SELECT * FROM `std_info` WHERE `id`=$id";
@@ -35,15 +35,17 @@ mysqli_close($conn);
 <body>
 <form method="post" action="update_std.php">
     <input type="hidden" name="old" value="<?php echo $old; ?>">
-    id: <input type="text" name="id" value="<?php echo $row['id']; ?>"><br>
-    name: <input type="text" name="en_name" value="<?php echo $row['en_name']; ?>"><br>
-    surname: <input type="text" name="en_surname" value="<?php echo $row['en_surname']; ?>"><br>
-    ชื่อ: <input type="text" name="th_name" value="<?php echo $row['th_name']; ?>"><br>
-    นามสกุล: <input type="text" name="th_surname" value="<?php echo $row['th_surname']; ?>"><br>
-    Major: <input type="text" name="major_code" value="<?php echo $row['major_code']; ?>"><br>
-    Email: <input type="text" name="email" value="<?php echo $row['email']; ?>"><br>
+    id: <input type="text" name="id" value="<?php echo isset($row['id']) ? $row['id'] : ''; ?>"><br>
+    name: <input type="text" name="en_name" value="<?php echo isset($row['en_name']) ? $row['en_name'] : ''; ?>"><br>
+    surname: <input type="text" name="en_surname" value="<?php echo isset($row['en_surname']) ? $row['en_surname'] : ''; ?>"><br>
+    ชื่อ: <input type="text" name="th_name" value="<?php echo isset($row['th_name']) ? $row['th_name'] : ''; ?>"><br>
+    นามสกุล: <input type="text" name="th_surname" value="<?php echo isset($row['th_surname']) ? $row['th_surname'] : ''; ?>"><br>
+    Major: <input type="text" name="major_code" value="<?php echo isset($row['major_code']) ? $row['major_code'] : ''; ?>"><br>
+    Email: <input type="text" name="email" value="<?php echo isset($row['email']) ? $row['email'] : ''; ?>"><br>
     <input type="submit" value="Update">
     <input type="reset">
+
+    
 </form>
 
 </body>
