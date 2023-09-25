@@ -42,6 +42,10 @@ if(!$conn){
         echo "<script>alert('กรุณากรอก นามสกุล'); window.history.back();</script>";
         exit;
     }
+    if (empty($major_code)){
+        echo "<script>alert('กรุณากรอก major'); window.history.back();</script>";
+        exit;
+    }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('อีเมล์ @ ไม่ถูกต้อง');window.history.back();</script>";
         exit;
