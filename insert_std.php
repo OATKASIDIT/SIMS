@@ -1,11 +1,11 @@
 <?php
-$id=trim($_POST["id"]);
-$en_name=trim($_POST["en_name"]);
-$en_surname=trim($_POST["en_surname"]);
-$th_name=trim($_POST["th_name"]);
-$th_surname=trim($_POST["th_surname"]);
-$major_code=trim($_POST["major_code"]);
-$email=trim($_POST["email"]);
+$id=htmlspecialchars(trim($_POST["id"]));
+$en_name=htmlspecialchars(trim($_POST["en_name"]));
+$en_surname=htmlspecialchars(trim($_POST["en_surname"]));
+$th_name=htmlspecialchars(trim($_POST["th_name"]));
+$th_surname=htmlspecialchars(trim($_POST["th_surname"]));
+$major_code=htmlspecialchars(trim($_POST["major_code"]));
+$email=htmlspecialchars(trim($_POST["email"]));
 //echo $id; echo $en_name; echo $en_surname; echo $th_name; echo $th_surname;
 //echo $major_code; echo $email;
 $servername="localhost";
